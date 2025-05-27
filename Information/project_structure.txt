@@ -1,0 +1,23 @@
+airplane_booking/
+├── main.py                      # Entry point (start CLI/UI/app)
+├── config.py                    # DB configs (use dotenv or constants)
+├── db/
+│   ├── connection.py            # Connects to MySQL
+│   └── schema.sql               # SQL file to create tables
+├── models/
+│   ├── person.py                # Person (abstract), Passenger
+│   ├── airplane.py              # Airplane
+│   ├── flight.py                # Flight
+│   └── reservation.py          # Reservation
+├── repositories/
+│   ├── passenger_repo.py        # Handles DB logic for Passenger
+│   ├── flight_repo.py
+│   ├── airplane_repo.py
+│   └── reservation_repo.py
+├── services/
+│   └── booking_manager.py       # Coordinates reservation logic
+├── tests/
+│   ├── test_reservation.py      # Pytest/unittest test cases
+│   └── conftest.py              # Fixtures (e.g. test DB setup)
+├── requirements.txt             # Dependencies
+└── .env                         # MySQL credentials (never commit this!)

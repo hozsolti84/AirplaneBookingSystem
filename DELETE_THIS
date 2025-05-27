@@ -1,0 +1,12 @@
+passengers = [
+    Passenger("Alice Smith", "alice@example.com", "P123456", dummy_reservation),
+    Passenger("Bob Johnson", "bob@example.com", "P223456", dummy_reservation),
+    Passenger("Carol Davis", "carol@example.com", "P323456", dummy_reservation),
+    Passenger("David Miller", "david@example.com", "P423456", dummy_reservation),
+    Passenger("Eve Wilson", "eve@example.com", "P523456", dummy_reservation),
+    Passenger("Frank Brown", "frank@example.com", "P623456", dummy_reservation),
+    Passenger("Grace Lee", "grace@example.com", "P723456", dummy_reservation),
+    Passenger("Hank Taylor", "hank@example.com", "P823456", dummy_reservation),
+    Passenger("Ivy Anderson", "ivy@example.com", "P923456", dummy_reservation),
+    Passenger("Jake Thomas", "jake@example.com", "P103456", dummy_reservation),
+]

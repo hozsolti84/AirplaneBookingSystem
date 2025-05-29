@@ -34,29 +34,33 @@ class Passenger(Person):
 
     def set_passport_numer(self, passport_number):
         self.__passport_number = passport_number
+
     @property
     def reservations(self):
         return self.__reservations
 
     def set_reservation(self, reservation_id: str, passenger: "Passenger", flight: "Flight obj", seat_number: str,status: str, booking_time: datetime):
         reservation = Reservation(reservation_id, passenger, flight, seat_number,status, booking_time)
-        # todo: Raise
         if reservation not in self.__reservations:
             self.__reservations.append(reservation)
         else:
-            raise
+            # todo: Raise reservations error
+            pass
     @property
     def frequent_flyer_points(self):
         return self.__frequent_flyer_points
 
     def book_flight(self, flight: Flight, seat_number: int) -> Reservation:
+        # todo: implement Passenger.book_flight
         pass
 
     def cancel_reservation(self, reservation_id: str):
+        # todo: implement Passenger.
         pass
 
 class Employee(Person):
     """Represents airline staff, such as pilots or gate agents."""
+    # todo: is the Employee class used somewhere, if not delete it?
     def __init__(self, employee_id: str, role: str):
         self.employee_id = employee_id
         self.role = role

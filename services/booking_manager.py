@@ -2,6 +2,10 @@ from models.airplane import Airplane
 from models.person import Passenger, Employee
 from models.flight import Flight
 from models.reservation import Reservation
+from my_exceptions.exceptions import PassengerAlreadyExistsError
+
+from repository.passengers_repo import select_passenger
+
 class BookingManager:
     def __init__(self):
         # self.airplane1 = Airplane("Airbus A320", "LH123456", 120)
@@ -9,7 +13,7 @@ class BookingManager:
         self.__passengers= list()
         self.__reservations = list()
         self.__flight = None
-        
+
     @property
     def airplane(self):
         return self.__airplane
@@ -21,10 +25,17 @@ class BookingManager:
     def passengers(self):
         return self.__passengers
 
-    def add_passenger(self, name, email, passport_number, reservations, frequent_flyer_points):
-        passanger = Passenger(name, email, passport_number, reservations=None, frequent_flyer_points=0)
-        if passanger. in
-            self.__passengers.append(passanger)
+    def add_passenger(self, name, email, passport_number, reservations=None, frequent_flyer_points=0):
+        passan = Passenger(name, email, passport_number, reservations, frequent_flyer_points)
+        """check if the passenger is already in the DB """
+
+        passangers = select_passenger(passport_number, table="passengers")
+
+        if passan not in passangers:
+            self.__passengers.append(passan)
+        else:
+            raise PassengerAlreadyExistsError
+
     @property
     def reservations(self):
         return self.__reservations

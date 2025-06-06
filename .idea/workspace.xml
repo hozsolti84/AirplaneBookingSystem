@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1017d0d0-f85b-4dd6-9406-e404a61e2ca5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ITTTARTOTTÁL.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/delete this.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_exceptions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/passengers_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DB/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB/connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Information/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_exceptions/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ITTTARTOTTÁL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ITTTARTOTTÁL.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delete this.py" beforeDir="false" afterPath="$PROJECT_DIR$/delete this.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/flight.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/flight.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/person.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/reservation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_exceptions/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_exceptions/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/exceptions/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/passengers_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository/passengers_repo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/booking_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +49,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Python.allAny.executor&quot;: &quot;Run&quot;,
+    &quot;Python.booking_manager.executor&quot;: &quot;Run&quot;,
     &quot;Python.delete this.executor&quot;: &quot;Run&quot;,
     &quot;Python.passengers_repo.executor&quot;: &quot;Run&quot;,
     &quot;Python.person.executor&quot;: &quot;Run&quot;,
@@ -60,11 +61,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A87484215\intermediatePythonKnowledge\AirplaneBookingSystem\exceptions" />
       <recent name="C:\Users\A87484215\intermediatePythonKnowledge\AirplaneBookingSystem\my_exceptions" />
       <recent name="C:\Users\A87484215\intermediatePythonKnowledge\AirplaneBookingSystem\Information" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.passengers_repo">
+  <component name="RunManager" selected="Python.booking_manager">
     <configuration name="allAny" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AirplaneBookingSystem" />
       <option name="ENV_FILES" value="" />
@@ -79,6 +81,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/allAny.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="booking_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AirplaneBookingSystem" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/services" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/services/booking_manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -177,6 +201,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.booking_manager" />
         <item itemvalue="Python.passengers_repo" />
         <item itemvalue="Python.delete this" />
         <item itemvalue="Python.person" />
@@ -201,6 +226,17 @@
       <updated>1748179031726</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

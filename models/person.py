@@ -2,8 +2,13 @@
 
 from abc import ABC
 
-from flight import Flight
-from models.reservation import Reservation
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from models.flight import Flight
+    from models.reservation import Reservation
+
+
 from typing import List, Optional
 from datetime import datetime
 
@@ -39,18 +44,21 @@ class Passenger(Person):
     def reservations(self):
         return self.__reservations
 
-    def set_reservation(self, reservation_id: str, passenger: "Passenger", flight: "Flight obj", seat_number: str,status: str, booking_time: datetime):
-        reservation = Reservation(reservation_id, passenger, flight, seat_number,status, booking_time)
+    def set_reservation(self, reservation: "Reservation"):
+        """reservation = Reservation(reservation_id, passenger, flight, seat_number,status, booking_time)"""
         if reservation not in self.__reservations:
             self.__reservations.append(reservation)
         else:
             # todo: Raise reservations error
             pass
+        return Reservation
+
+
     @property
     def frequent_flyer_points(self):
         return self.__frequent_flyer_points
 
-    def book_flight(self, flight: Flight, seat_number: int) -> Reservation:
+    def book_flight(self, flight: "Flight", seat_number: int) -> "Reservation":
         # todo: implement Passenger.book_flight
         pass
 

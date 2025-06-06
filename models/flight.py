@@ -1,5 +1,6 @@
 
 from datetime import datetime
+
 class Flight:
 
     def __init__(self, flight_number: str, origin: str, destination: str,

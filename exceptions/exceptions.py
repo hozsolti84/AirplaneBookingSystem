@@ -73,13 +73,20 @@ class FlightTimeError(BookingExceptionsError):
 			self.message =  "Valid flight time error, but was still raised."  # Should never really happen
 
 
-class PassengerNotFoundError(BookingExceptionsError):
+class PassengerExeptionError(Exception):
+	def __init__(self, message="The passenger was not found in the DB!"):
+		self.message = message
+		super().__init__(message)
+
+
+class PassengerNotFoundError(PassengerExeptionError):
 	def __init__(self, message="The passenger was not found!"):
-		self.message = message
+		# self.message = message
 		super().__init__(message)
 
 
-class PassengerAlreadyExistsError(BookingExceptionsError):
+class PassengerAlreadyExistsError(PassengerExeptionError):
 	def __init__(self, message="The passanger already exists!"):
-		self.message = message
+		# self.message = message
 		super().__init__(message)
+

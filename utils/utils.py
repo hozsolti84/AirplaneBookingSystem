@@ -1,8 +1,8 @@
 from configparser import ConfigParser
-from my_exceptions.exceptions import SectionNotFound, KeyNotFoundInConfig, ValueNotFoundInConfig
+from exceptions.exceptions import SectionNotFound, KeyNotFoundInConfig, ValueNotFoundInConfig
 
 
-def get_data(path, section, key):
+def get_data(section, key, path="../config.ini"):
     conf = ConfigParser()
     try:
         conf.read(path)

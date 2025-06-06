@@ -1,39 +1,52 @@
-
-from DB.connection import get_connection
 from utils.utils import get_data
+from DB.connection import Connections
+class PassengerActions:
+    def __init__(self, passport_number, table="passengers"):
+        self.passport_number = passport_number
+        self.table = table
+        self.query = get_data("query", "select").format(table, passport_number)
+        self.connection = Connections().create_connection()
+
+    def get_query(self):
+        self.query = get_data("query", "select").format(self.table, self.passport_number)
+        return self.query
+
+    def query_executer(self):
+        self.query = self.get_query()
+        print(f"The query '{self.query}' is being executed!")
+        cur = self.connection.cursor()
+        cur.execute(self.query)
+        res = cur.fetchall()
+        self.connection.close()
+
+        return res
 
 
-def select_passenger(passport_number, table="passengers"):
-    """gets one passenger or passenger list"""
-    query = get_data("config.ini", "query", "select").format(passport_number, table)
+    def select_passenger(self):
+        """Execute a query"""
+        res = self.query_executer()
+        print("res: ", res)
 
-    """create a connection with DB.connection.get_connection()"""
-    host = get_data("config.ini", "db", "host")
-    port= get_data("config.ini", "db", "port")
-    user = get_data("config.ini", "db", "user")
-    password = get_data("config.ini", "db", "password")
-    connection = get_connection(host, port, user, password)
-    print("host:", host)
-    print("port:", port)
-    print("user:", user)
-    print("password:", password)
+        """"check results"""
+        "This is from the Passenger.PassengerActions.select.passenger()"
+        if res:
+            return res[0]
+        else:
+            print(f"No result was found for the passanger with passport number '{self.passport_number}'")
 
-    cur = connection.cursor()
 
-    """Execute a query"""
-    print(f"The query '{query}' is being executed!")
-    cur.execute(query)
+    def insert_passenger(self): pass
 
-    """"check results"""
-    for row in cur:
-        print(row)
 
-    # Close connection
-    connection.close()
+    # todo: use this too if you can.
+    def update_passenger(self): pass
 
-def insert_passener(query): pass
+    def delete_passenger(self): pass
 
-def delete_passenger(query): pass
+    # todo: do I need this here or will I call it somehow else?
+    def get_passenger_list(self): pass
+
 
 if __name__=="__main__":
-    select_passenger('12345678')
+    andor = PassengerActions('A23456789')
+    andor.select_passenger()

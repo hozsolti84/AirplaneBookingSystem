@@ -13,7 +13,16 @@ class Reservation:
         self.__status = status                 #  "confirmed", "cancelled"
         self.__booking_time = booking_time
 
-    def cancel(self, ):
+
+    # todo:     @property-s: __flight, __seat_number, __status, __booking_time????
+
+    def create_reservation(self):
+        pass
+
+    def update_reservation(self):
+        pass
+
+    def cancel_reservation(self):
         """updates status, removes from passenger and flight records"""
         pass
 

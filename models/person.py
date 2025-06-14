@@ -1,23 +1,20 @@
-
-
 from abc import ABC
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Optional
 
 if TYPE_CHECKING:
     from models.flight import Flight
     from models.reservation import Reservation
 
 
-from typing import List, Optional
 from datetime import datetime
 
 
 class Person(ABC):
     """ Abstract class for all people in the system. """
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
+    def __init__(self, name: str, email:str):
+        self.__name = name
+        self.__email = email
 
 class Passenger(Person):
     """Represents someone booking flights."""
@@ -44,27 +41,24 @@ class Passenger(Person):
     def reservations(self):
         return self.__reservations
 
-    def set_reservation(self, reservation: "Reservation"):
-        """reservation = Reservation(reservation_id, passenger, flight, seat_number,status, booking_time)"""
+    def book_flight(self, flight: "Reservation", seat_number: str) -> Reservation:
+        # todo: Reservation(reservation_id, passenger, flight, seat_number,status, booking_time)
+        reservation = Reservation(flight, seat_number)
         if reservation not in self.__reservations:
+            # todo: implement Passenger.book_flight
             self.__reservations.append(reservation)
         else:
             # todo: Raise reservations error
             pass
         return Reservation
 
+    def cancel_reservation(self, reservation_id: str):
+        # todo: implement Passenger.
+        pass
 
     @property
     def frequent_flyer_points(self):
         return self.__frequent_flyer_points
-
-    def book_flight(self, flight: "Flight", seat_number: int) -> "Reservation":
-        # todo: implement Passenger.book_flight
-        pass
-
-    def cancel_reservation(self, reservation_id: str):
-        # todo: implement Passenger.
-        pass
 
 class Employee(Person):
     """Represents airline staff, such as pilots or gate agents."""
@@ -72,6 +66,7 @@ class Employee(Person):
     def __init__(self, employee_id: str, role: str):
         self.employee_id = employee_id
         self.role = role
+        super().__init__()
 
 
 

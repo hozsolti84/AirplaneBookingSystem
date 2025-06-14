@@ -1,6 +1,15 @@
 #######################################
 #				 EXPETIONS 			  #
 #######################################
+""""""
+"""		Utility Expetions 			"""
+class UtilityException(Exception):
+	def __init__(self, message="There was a problem with the called utility function"):
+		super().__init__(message)
+
+class GetdataExceptionError(UtilityException):
+	def __init__(self, message="The utility function get_data has run in to a problem!"):
+		super().__init__(message)
 
 """		Config Exceptions			"""
 class ConfigException(Exception):
@@ -70,7 +79,7 @@ class FlightTimeError(BookingExceptionsError):
 		if arrival_time <= departure_time:
 			self.message = f"Invalid flight times: arrival_time ({arrival_time}) must be after departure_time ({departure_time})"
 		else:
-			self.message =  "Valid flight time error, but was still raised."  # Should never really happen
+			self.message = "Valid flight time error, but was still raised."  # Should never really happen
 
 
 class PassengerExeptionError(Exception):

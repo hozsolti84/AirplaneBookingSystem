@@ -4,18 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1017d0d0-f85b-4dd6-9406-e404a61e2ca5" name="Changes" comment="">
+    <list default="true" id="1017d0d0-f85b-4dd6-9406-e404a61e2ca5" name="Changes" comment="1.  Corrected passanger object to __passanger&#10;2. Corrected select_passenger() return res and error message">
+      <change afterPath="$PROJECT_DIR$/DB/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DELETE_THIS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Information/Iter1_skeleton.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airplain_booking/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/airplain_booking/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/repository/airplane_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/repository/flight_repo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB/connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ITTTARTOTTÁL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ITTTARTOTTÁL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/delete this.py" beforeDir="false" afterPath="$PROJECT_DIR$/delete this.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exceptions/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/exceptions/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/airplane.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/airplane.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/flight.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/flight.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/person.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/reservation.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/reservation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exceptions/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_exceptions/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/exceptions/exceptions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repository/passengers_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository/passengers_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/booking_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/booking_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
@@ -34,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hozsolti84&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hozsolti84/AirplaneBookingSystem.git&quot;,
+    &quot;accountId&quot;: &quot;88f687cd-da05-4f8a-b24a-6ce61d39aaba&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -51,6 +68,7 @@
     &quot;Python.allAny.executor&quot;: &quot;Run&quot;,
     &quot;Python.booking_manager.executor&quot;: &quot;Run&quot;,
     &quot;Python.delete this.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exceptions.executor&quot;: &quot;Run&quot;,
     &quot;Python.passengers_repo.executor&quot;: &quot;Run&quot;,
     &quot;Python.person.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -67,28 +85,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.booking_manager">
-    <configuration name="allAny" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="AirplaneBookingSystem" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/allAny.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="booking_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AirplaneBookingSystem" />
       <option name="ENV_FILES" value="" />
@@ -125,6 +121,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/delete this.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exceptions" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AirplaneBookingSystem" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exceptions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exceptions/exceptions.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,8 +222,8 @@
         <item itemvalue="Python.booking_manager" />
         <item itemvalue="Python.passengers_repo" />
         <item itemvalue="Python.delete this" />
+        <item itemvalue="Python.exceptions" />
         <item itemvalue="Python.person" />
-        <item itemvalue="Python.allAny" />
       </list>
     </recent_temporary>
   </component>
@@ -225,6 +243,15 @@
       <option name="presentableId" value="Default" />
       <updated>1748179031726</updated>
     </task>
+    <task id="LOCAL-00001" summary="1.  Corrected passanger object to __passanger&#10;2. Corrected select_passenger() return res and error message">
+      <option name="closed" value="true" />
+      <created>1749225850901</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749225850901</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,5 +267,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="1.  Corrected passanger object to __passanger&#10;2. Corrected select_passenger() return res and error message" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.  Corrected passanger object to __passanger&#10;2. Corrected select_passenger() return res and error message" />
   </component>
 </project>

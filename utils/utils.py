@@ -1,9 +1,8 @@
 from configparser import ConfigParser
 from exceptions.exceptions import SectionNotFound, KeyNotFoundInConfig, ValueNotFoundInConfig
 
-
 def get_data(section, key, path="../config.ini"):
-    conf = ConfigParser()
+    conf = ConfigParser(interpolation=None)
     try:
         conf.read(path)
     except FileNotFoundError as FNF:

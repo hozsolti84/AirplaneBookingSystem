@@ -1,0 +1,204 @@
+##################################
+        CORE ARHITECTURE
+##################################
+Objective
+Design a flight reservation system that
+	1. tracks airplanes,
+	2. scheduled flights,
+	3. passengers, and
+	4. seat bookings.
+ This iteration establishes the foundation:
+	domain modeling,
+	relationships,
+	key rules.
+
+🧩 Class Breakdown & Responsibilities
+
+1. Person
+Abstract class for all people in the system.
+Used by: Passenger, Employee
+	• Attributes:
+		○ name: str
+		○ email: str
+
+2. Passenger(Person)
+Represents someone booking flights.
+	• Attributes:
+		○ passport_number: str
+		○ frequent_flyer_points: int (default: 0)
+		○ reservations: list of Reservation objects (composition)
+	• Methods:
+		○ book_flight(flight: Flight, seat_number: str) -> Reservation
+		○ cancel_reservation(reservation_id: str)
+
+3. Employee(Person)
+Represents airline staff, such as pilots or gate agents.
+	• Attributes:
+		○ employee_id: str
+		○ role: str (e.g., "Pilot", "Gate Agent")
+
+4. Airplane
+Defines a specific aircraft model and its seating.
+	• Attributes:
+		○ model: str (e.g., “Airbus A320”)
+		○ registration: str (tail number)
+		○ capacity: int
+
+
+5. Flight
+Represents a scheduled trip using a specific airplane.
+	• Attributes:
+		○ flight_number: str (e.g., “LH123”)
+		○ origin: str
+		○ destination: str
+		○ departure_time: datetime
+		○ arrival_time: datetime
+		○ airplane: Airplane object
+		○ reservations: list of Reservation objects
+	• Rules:
+		○ Cannot double-book a seat
+		○ arrival_time must be after departure_time
+	• Methods:
+		○ is_seat_available(seat_number: str) -> bool
+		○ assign_seat(passenger: Passenger, seat_number: str) -> Reservation
+		○ cancel_seat(reservation_id: str)
+		○ get_available_seats() -> list[str]
+
+6. Reservation
+Represents a confirmed booking linking a passenger to a seat on a flight.
+	• Attributes:
+		○ reservation_id: str (e.g., UUID or generated)
+		○ passenger: Passenger
+		○ flight: Flight
+		○ seat_number: str
+		○ status: str ("confirmed", "cancelled")
+		○ booking_time: datetime
+	• Methods:
+		○ cancel(): updates status, removes from passenger and flight records
+		○ summary(): returns printable reservation details
+
+7. BookingManager
+Orchestrates bookings — validates and executes logic.
+	• Responsibilities:
+		○ Handles reservation creation and cancellation
+		○ Ensures airplane and seat consistency
+		○ Prevents invalid operations (e.g., double-booking)
+	• Methods:
+		○ create_reservation(passenger: Passenger, flight: Flight, seat_number: str) -> Reservation
+		○ cancel_reservation(reservation_id: str)
+		○ list_flight_reservations(flight_number: str) -> list[Reservation]
+
+❗ Business Rules & Validations
+	• Cannot book a seat that is already reserved
+	• Each reservation must be associated with a valid passenger and flight
+	• Arrival time must be after departure time
+	• Deleting a reservation must update:
+		○ Passenger’s list
+		○ Flight’s seat map
+		○ Reservation’s status
+	• An airplane’s seat_map must not exceed its declared capacity
+
+⚠️ Exceptions
+Create custom exceptions (you’ll implement them in code):
+	• SeatAlreadyBookedError
+	• SeatDoesNotExistError
+	• InvalidReservationError
+	• FlightTimeError (for invalid departure/arrival pairs)
+	• PassengerNotFoundError
+
+🧪 Test Strategy (Starting Point)
+You’ll test:
+	• Creating flights and airplanes
+	• Booking a seat for a passenger
+	• Attempting to double-book (expect failure)
+	• Cancelling a reservation (seat becomes available again)
+Recommended: pytest
+(You can use unittest if preferred. Later you might add test fixtures and mocks.)
+
+
+Updated Architecture with DB Integration
+We now introduce a data access layer (DAL) or repository pattern, responsible for:
+	• CRUD operations per entity (e.g., PassengerRepository, FlightRepository)
+	• Translating between database rows and Python objects
+Example: Class Layering
+┌──────────────────────────────────────────┐
+│              BookingManager              │◄── High-level system logic (orchestration)
+└──────────────────────────────────────────┘
+             │            ▲
+             ▼            │
+┌───────────────────────────────┐
+│      Domain Entities          │◄── Business logic (e.g., Flight, Reservation)
+└───────────────────────────────┘
+             │            ▲
+             ▼            │
+┌───────────────────────────────┐
+│       Repository Layer        │◄── Handles SQL I/O (e.g., PassengerRepository)
+└───────────────────────────────┘
+             │
+             ▼
+┌───────────────────────────────┐
+│        MySQL Database         │
+└───────────────────────────────┘
+
+📄 Database Schema Overview
+You will need these tables (names and types are suggestions):
+Table: passengers
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255),
+email VARCHAR(255),
+passport_number VARCHAR(50) UNIQUE,
+frequent_flyer_points INT
+
+Table: airplanes
+id INT PRIMARY KEY AUTO_INCREMENT,
+model VARCHAR(100),
+registration VARCHAR(50) UNIQUE,
+capacity INT
+
+Table: flights
+id INT PRIMARY KEY AUTO_INCREMENT,
+flight_number VARCHAR(20) UNIQUE,
+origin VARCHAR(100),
+destination VARCHAR(100),
+departure_time DATETIME,
+arrival_time DATETIME,
+airplane_id INT,
+FOREIGN KEY (airplane_id) REFERENCES airplanes(id)
+
+Table: reservations
+id INT PRIMARY KEY AUTO_INCREMENT,
+reservation_code VARCHAR(36) UNIQUE,
+passenger_id INT,
+flight_id INT,
+seat_number VARCHAR(10),
+status ENUM('confirmed', 'cancelled'),
+booking_time DATETIME,
+FOREIGN KEY (passenger_id) REFERENCES passengers(id),
+FOREIGN KEY (flight_id) REFERENCES flights(id)
+
+🧠 Design Notes
+	• Composition is preserved: Passenger has a list of Reservations, but DB handles linking.
+	• Inheritance: Person can be used as an abstract Python base class (not a table unless you use joined table inheritance).
+	• Your repository classes abstract the SQL logic:
+		○ PassengerRepository.save(passenger)
+		○ FlightRepository.get_by_id(id)
+		○ ReservationRepository.create(...)
+
+⚙️ Technologies
+You’ll likely use:
+	• MySQL (local or via Docker)
+	• SQLAlchemy (ORM) or mysql-connector-python (raw SQL)
+	• pytest for testing (with a test DB or mocking)
+	• dotenv or config for DB credentials
+
+✅ What You’ll Be Implementing Next
+	1. Skeleton class structure (from earlier)
+	2. DB schema (you can set up SQL migrations if needed)
+	3. DB connector module or ORM layer
+	4. Initial test suite (create/read/update/delete a reservation)
+
+Would you like to start with:
+	• The MySQL schema in SQL, or
+	• The Python connector + repository skeleton, or
+	• The basic test plan for booking/cancelling a reservation?
+Let me know your preferred starting point.
